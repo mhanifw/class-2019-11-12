@@ -1,0 +1,36 @@
+---
+title: "Class"
+author: "David Kane"
+date: "11/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(googlesheets4)
+library(tidyverse)
+
+sheets_deauth()
+x <- read_sheet("13NhlT-Oik5P4NOKRWwrJ7xZQlddFNk81HHEw9wkWglM")
+```
+
+## National Election Survey Data
+
+### Relationship between partisanship and voting Democratic using linear model
+
+```{r}
+x %>% 
+  ggplot(aes(partisanship, dvote)) +
+  geom_jitter() +
+  geom_smooth(method = "lm")
+```
+
+### Details on linear model
+
+```{r}
+lm(data = x, dvote ~ partisanship)
+
+```
+
+
+
