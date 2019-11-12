@@ -32,5 +32,20 @@ lm(data = x, dvote ~ partisanship)
 
 ```
 
+### We need a logistic regression
 
+
+```{r}
+x %>% 
+  ggplot(aes(partisanship, dvote)) +
+  geom_jitter(height = 0.2) +
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE)
+```
+
+### Details on logistic model
+
+```{r}
+glm(data = x, dvote ~ partisanship, family = "binomial")
+
+```
 
